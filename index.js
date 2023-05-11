@@ -1,5 +1,3 @@
-module.exports = SSOHandler
-
 class SSOHandler {
   constructor(
     ssoUrl = '/sso/provider',
@@ -64,3 +62,5 @@ class SSOHandler {
     return false;
   }
 }
+
+module.exports = SSOHandler

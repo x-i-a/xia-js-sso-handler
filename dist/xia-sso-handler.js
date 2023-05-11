@@ -40,7 +40,6 @@ class SSOHandler {
   }
 
   refreshAccessToken() {
-    console.log("refreshAccessToken !")
     this.access_cookie = Cookies.get(this.accessCookieName);
     this.refresh_signal = Cookies.get(this.refreshSignalName);
     this.refresh_signal_body = this.getUnverifiedBody(this.refresh_signal);
@@ -48,11 +47,13 @@ class SSOHandler {
       const newLocation = this.refresh_signal_body['token_info']['root'];
       console.log("Refresh access token only for the same site")
       if (newLocation.startsWith("/")) {
-        location.href = newLocation;
+        // location.href = newLocation;
+        fetch(newLocation)
         return true;
       }
     } else if (!this.access_cookie && this.getValue(this.rootHeader, 'login', false)) {
-      location.href = this.ssoUrl;
+      // location.href = this.ssoUrl;
+      fetch(this.ssoUrl)
       return true
     }
     return false;

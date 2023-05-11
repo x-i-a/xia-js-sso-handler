@@ -1,3 +1,5 @@
+const Cookies = require('js-cookie');
+
 class SSOHandler {
   constructor(
     ssoUrl = '/sso/provider',

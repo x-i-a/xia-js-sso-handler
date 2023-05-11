@@ -1,6 +1,6 @@
 {
   "name": "xia-js-sso-handler",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Handler SSO in X-I-A infrastructure",
   "main": "index.js",
   "scripts": {
@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/x-i-a/xia-js-sso-handler/issues"
   },
-  "homepage": "https://github.com/x-i-a/xia-js-sso-handler#readme"
+  "homepage": "https://github.com/x-i-a/xia-js-sso-handler#readme",
+  "dependencies": {
+    "js-cookie": "^3.0.5"
+  }
 }

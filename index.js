@@ -1,3 +1,5 @@
+module.exports = SSOHandler
+
 class SSOHandler {
   constructor(
     ssoUrl = '/sso/provider',

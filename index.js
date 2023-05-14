@@ -50,15 +50,16 @@ class SSOHandler {
     }
     else if (!this.access_cookie && ('token_info' in this.refresh_signal_body)) {
       const newLocation = this.refresh_signal_body['token_info']['root'];
-      console.log("Refresh access token only for the same site")
+      console.log("Refreshing access token")
       if (newLocation.startsWith("/")) {
         // location.href = newLocation;
         await fetch(newLocation)
         return true;
       }
     } else if (!this.access_cookie && this.getValue(this.rootHeader, 'login', false)) {
-      // location.href = this.ssoUrl;
-      await fetch(this.ssoUrl)
+      console.log("Redirect to SSO")
+      location.href = this.ssoUrl;
+      await new Promise(resolve => setTimeout(resolve, 10000));  // blocking the following command as the page will be refreshed
       return true
     }
     return false;

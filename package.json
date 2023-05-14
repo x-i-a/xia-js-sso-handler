@@ -1,6 +1,6 @@
 {
   "name": "xia-js-sso-handler",
-  "version": "0.0.7",
+  "version": "0.0.9",
   "description": "Handler SSO in X-I-A infrastructure",
   "main": "index.js",
   "scripts": {

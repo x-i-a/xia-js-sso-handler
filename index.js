@@ -42,7 +42,8 @@ class SSOHandler {
   }
 
   getScope(prefix, pos) {
-    return (this.access_cookie_body.user_acl || [])
+    const accessToken = this.getUnverifiedBody(this.access_cookie)
+    return [...new Set((accessToken.user_acl || [])
       .filter((acl) => {
         if (acl.obj && acl.obj.startsWith('prefix')) {
           const parts = acl.obj.split('/')
@@ -50,7 +51,7 @@ class SSOHandler {
         }
         return false
       })
-      .map(acl => acl.obj.split('/')[pos])
+      .map(acl => acl.obj.split('/')[pos]))]
   }
 
   async refreshAccessToken() {

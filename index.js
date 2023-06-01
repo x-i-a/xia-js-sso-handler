@@ -45,7 +45,7 @@ class SSOHandler {
     const accessToken = this.getUnverifiedBody(this.access_cookie)
     return [...new Set((accessToken.user_acl || [])
       .filter((acl) => {
-        if (acl.obj && acl.obj.startsWith('prefix')) {
+        if (acl.obj && acl.obj.startsWith(prefix)) {
           const parts = acl.obj.split('/')
           return parts.length > pos && parts[pos] !== '*'
         }

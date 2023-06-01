@@ -41,6 +41,18 @@ class SSOHandler {
     }
   }
 
+  getScope(prefix, pos) {
+    return (this.access_cookie_body.user_acl || [])
+      .filter((acl) => {
+        if (acl.obj && acl.obj.startsWith('prefix')) {
+          const parts = acl.obj.split('/')
+          return parts.length > pos && parts[pos] !== '*'
+        }
+        return false
+      })
+      .map(acl => acl.obj.split('/')[pos])
+  }
+
   async refreshAccessToken() {
     this.access_cookie = Cookies.get(this.accessCookieName);
     this.refresh_signal = Cookies.get(this.refreshSignalName);
